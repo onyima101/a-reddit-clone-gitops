@@ -31,7 +31,7 @@ pipeline {
                             sh "git config user.email onyima_101@yahoo.com"
                             sh "git config user.name onyima101"
                             sh "cat deployment.yaml"
-                            sh "sed -i 's+onyima101/reddit-clone-pipeline.*+onyima101/reddit-clone-pipeline:${DOCKERTAG}+g' deployment.yaml"
+                            sh "sed -i 's+${DOCKER_USER}/${APP_NAME}.*+${DOCKER_USER}/${APP_NAME}:${DOCKERTAG}+g' deployment.yaml"
                             sh "cat deployment.yaml"
                             sh "git add ."
                             sh "git commit -m 'Done by Jenkins Job changemanifest: ${env.BUILD_NUMBER}'"
