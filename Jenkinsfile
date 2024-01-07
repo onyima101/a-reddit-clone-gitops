@@ -29,10 +29,10 @@ pipeline {
                     git config --global user.name "onyima101"
                     git config --global user.email "onyima_101@yahoo.com"
                     git add deployment.yaml
-                    git commit -m "Updated Deployment Manifest"
+                    git commit -m "Updated Deployment Manifest: ${env.BUILD_NUMBER}'"
                 """
                 withCredentials([gitUsernamePassword(credentialsId: 'github', gitToolName: 'Default')]) {
-                    sh "git push https://github.com/onyima101/a-reddit-clone-gitops main"
+                    sh "git push https://github.com/onyima101/a-reddit-clone-gitops HEAD:main"
                 }
             }
          }
