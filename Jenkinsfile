@@ -3,6 +3,7 @@ pipeline {
     environment {
           APP_NAME = "reddit-clone-pipeline"
           DOCKER_USER = "onyima101"
+          IMAGE_TAG = "${RELEASE}-${BUILD_NUMBER}"
     }
     stages {
         stage("Cleanup Workspace") {
@@ -32,7 +33,7 @@ pipeline {
                             sh "git config user.email onyima_101@yahoo.com"
                             sh "git config user.name onyima101"
                             sh "cat deployment.yaml"
-                            sh "sed -i 's+${DOCKER_USER}/${APP_NAME}.*+${DOCKER_USER}/${APP_NAME}:${DOCKERTAG}+g' deployment.yaml"
+                            sh "sed -i 's+${DOCKER_USER}/${APP_NAME}.*+${DOCKER_USER}/${APP_NAME}:${IMAGE_TAG}+g' deployment.yaml"
                             sh "cat deployment.yaml"
                             sh "git add ."
                             sh "git commit -m 'Done by Jenkins Job changemanifest: ${env.BUILD_NUMBER}'"
