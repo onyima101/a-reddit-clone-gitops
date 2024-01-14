@@ -3,7 +3,7 @@ pipeline {
     environment {
           APP_NAME = "reddit-clone-pipeline"
           DOCKER_USER = "onyima101"
-        //   IMAGE_TAG = "${RELEASE}-${BUILD_NUMBER}"
+          IMAGE_TAG = "${env.BUILD_NUMBER}"
     }
     stages {
         stage("Cleanup Workspace") {
