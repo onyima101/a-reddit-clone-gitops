@@ -2,6 +2,7 @@ pipeline {
     agent any
     environment {
           APP_NAME = "reddit-clone-pipeline"
+          DOCKER_USER = "onyima101"
     }
     stages {
         stage("Cleanup Workspace") {
